@@ -2,20 +2,25 @@
   <md-toolbar>
     <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
 
-      <md-button class="md-icon-button md-primary" ng-click="maps.back()" aria-label="Back">
-        <ng-md-icon icon="chevron_left"></ng-md-icon>
-      </md-button>
+      <div flex="10" layout layout-align="start">
+        <md-button md-no-ink=""class="md-icon-button md-primary" ng-click="maps.back()" aria-label="Back">
+          <ng-md-icon icon="chevron_left"></ng-md-icon>
+        </md-button>
+      </div>
 
-      <div layout="row" layout-align="center">
+      <div flex layout layout-align="center">
         <p>{{ maps.title }}</p>
       </div>
 
-      <p flex></p>
+      <div flex="10" layout layout-align="end">
+      </div>
 
     </div>
   </md-toolbar>
 
-  <md-whiteframe class="md-whiteframe-7dp" layout layout-align="center center" style="width: 30em; height: 40em;">
-    <div id="map" style="width: 28em; height: 38em;"></div>
-  </md-whiteframe>
+  <div flex layout layout-align="center center">
+    <md-whiteframe class="md-whiteframe-7dp" layout layout-align="center center" style="width: 30em; height: 40em;">
+      <div id="map" style="width: 28em; height: 38em;"></div>
+    </md-whiteframe>
+  </div>
 </md-content>

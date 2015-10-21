@@ -42,7 +42,8 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
 
 
     $scope.$watch("$state.current.title", function() {
+      if(ctrl.title != $state.current.title){
         ctrl.title = $state.current.title;
-        $scope.$apply();
+      }
     }, true);
 });

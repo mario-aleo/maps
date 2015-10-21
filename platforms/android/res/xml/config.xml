@@ -19,12 +19,12 @@
         <param name="android-package" value="plugin.google.maps.MyGeocoder" />
     </feature>
     <allow-intent href="market:*" />
-    <name>HelloCordova</name>
+    <name>Maps</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Testes com mapas: GoogleMaps e MapLink.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author>
+        Mario Aleo GolSat
     </author>
     <content src="index.html" />
     <access origin="*" />
