@@ -1,0 +1,27 @@
+<md-content layout="column" layout-align="space-between center" style="width: 100%; height: 100%;">
+  <md-toolbar>
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+
+      <md-button class="md-icon-button md-primary" ng-click="link.back()" aria-label="Back">
+        <ng-md-icon icon="chevron_left"></ng-md-icon>
+      </md-button>
+
+      <div layout="row" layout-align="center">
+        <p>{{ link.title }}</p>
+      </div>
+
+      <p flex></p>
+
+    </div>
+  </md-toolbar>
+
+  <md-whiteframe class="md-whiteframe-7dp" layout layout-align="center center" style="width: 90%; height: 80%;">
+    <div id="divMap" style="width: 700px; height: 600px; border: solid 1px black;"></div>
+    <div id="divInfo"></div>
+  </md-whiteframe>
+</md-content>
+
+
+<script type="text/javascript">
+
+</script>
