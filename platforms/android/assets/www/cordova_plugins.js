@@ -11,6 +11,34 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+        "id": "cordova-plugin-device-orientation.CompassError",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+        "id": "cordova-plugin-device-orientation.CompassHeading",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+        "id": "cordova-plugin-device-orientation.compass",
+        "clobbers": [
+            "navigator.compass"
+        ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.OrientationLock/www/orientationLock.js",
+        "id": "com.phonegap.plugins.OrientationLock.OrientationLock",
+        "clobbers": [
+            "OrientationLock"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -18,7 +46,9 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-statusbar": "2.0.0-dev",
-    "cordova-plugin-geolocation": "1.0.1"
+    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-device-orientation": "1.0.1",
+    "com.phonegap.plugins.OrientationLock": "0.1"
 }
 // BOTTOM OF METADATA
 });

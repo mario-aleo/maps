@@ -5,14 +5,17 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
     var ctrl = this;
 
 
+    // Start Common Functions
     ctrl.goToGoogleMaps = function(){
+      window.plugins.orientationLock.unlock()
       $state.go("googlemaps");
     };
 
-
     ctrl.goToMapLink = function(){
+      window.plugins.orientationLock.unlock()
       $state.go("maplink");
     };
+    // End Common Functions
 
 
     /*ctrl.toggle = angular.noop;
@@ -41,7 +44,10 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
     };*/
 
 
+    // Start Geolocation Startup
     document.addEventListener("deviceready", function () {
+      window.plugins.orientationLock.lock("portrait");
+
       $cordovaGeolocation
       .getCurrentPosition()
       .then(function (position) {
@@ -51,11 +57,13 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
         // error
       });
     }, false);
+    // End Geolocation Startup
 
-
+    // Start Common Watchs
     $scope.$watch("$state.current.title", function() {
       if(ctrl.title != $state.current.title){
         ctrl.title = $state.current.title;
       }
     }, true);
+    // End Common Watchs
 });

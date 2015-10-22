@@ -225,4 +225,7 @@
     <ItemGroup>
         <Compile Include="Plugins\cordova-plugin-geolocation\Geolocation.cs" />
     </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\cordova-plugin-device-orientation\Compass.cs" />
+    </ItemGroup>
 </Project>

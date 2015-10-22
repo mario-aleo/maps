@@ -18,4 +18,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <feature name="Compass">
+        <param name="wp-package" value="Compass" />
+    </feature>
 </widget>
