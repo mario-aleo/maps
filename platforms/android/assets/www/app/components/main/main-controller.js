@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $mdSidenav, $mdComponentRegistry){
+angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $mdSidenav, $mdComponentRegistry, $cordovaGeolocation){
 
     var ctrl = this;
 
@@ -39,6 +39,18 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
         .then(function(){
         });
     };*/
+
+
+    document.addEventListener("deviceready", function () {
+      $cordovaGeolocation
+      .getCurrentPosition()
+      .then(function (position) {
+        shared.position.lat  = position.coords.latitude
+        shared.position.long = position.coords.longitude
+      }, function(err) {
+        // error
+      });
+    }, false);
 
 
     $scope.$watch("$state.current.title", function() {

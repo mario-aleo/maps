@@ -1,14 +1,14 @@
 "use strict";
 
-angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ngCordova" ])
+angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ngCordova", "ngMap"])
 
 .run(function($rootScope, $cordovaDevice){
     document.addEventListener("deviceready", function () {
-        $rootScope.$watch("window.StatusBar", function(newValue, oldValue) {
+        $rootScope.$watch("window.StatusBar", function() {
             StatusBar.overlaysWebView(false);
             StatusBar.backgroundColorByName("black");
             $rootScope.$apply();
-        }); 
+        });
     }, false);
-    
+
 });

@@ -222,4 +222,7 @@
     </ItemGroup>
     <ItemGroup />
     <ItemGroup />
+    <ItemGroup>
+        <Compile Include="Plugins\cordova-plugin-geolocation\Geolocation.cs" />
+    </ItemGroup>
 </Project>

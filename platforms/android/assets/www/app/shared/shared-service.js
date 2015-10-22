@@ -6,4 +6,9 @@ angular.module("ngapp").service("shared", function(){
         title: "cordova-angular-angularMaterial-seed",
         auth: "Mario Aleo"
     };
+
+    this.position = {
+      lat: null,
+      long: null
+    };
 });

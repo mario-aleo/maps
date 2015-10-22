@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("GoogleMapsController", function(shared, $state, $scope, $interval){
+angular.module("ngapp").controller("GoogleMapsController", function(shared, $state, $scope, $interval, $cordovaGeolocation){
 
   var ctrl = this;
 
@@ -12,6 +12,12 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
 
 
   ctrl.map;
+
+
+  var lat = shared.position.lat;
+
+
+  var long = shared.position.long;
 
 
   var markers = [];
@@ -48,14 +54,45 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
     stopCount();
   });
 
+  document.addEventListener("deviceready", function () {
+    var watchOptions = {
+       timeout : 3000,
+       enableHighAccuracy: false // may cause errors if true
+     };
+
+    var watch = $cordovaGeolocation.watchPosition(watchOptions);
+     watch.then(
+       null,
+       function(err) {
+         // error
+       },
+       function(position) {
+         shared.position.lat  = position.coords.latitude;
+         shared.position.long = position.coords.longitude;
+
+         lat = shared.position.lat;
+         long = shared.position.long;
+
+         ctrl.map.center.lat = lat;
+         ctrl.map.center.long = long;
+     });
+
+
+     watch.clearWatch();
+    }, false);
 
 
   function initMap() {
-    var defaultCenter = { lat: -23.56, lng: -46.65 };
+    if(lat == null || long == null){
+      var center = { lat: -23.56, lng: -46.65 };
+    } else{
+      var center = { lat: lat, lng: long };
+    }
+
     ctrl.map = new google.maps.Map(document.getElementById('map'), {
       disableDefaultUI: true,
       zoom: 12,
-      center: defaultCenter
+      center: center
     });
 
     // This event listener calls addMarker() when the map is clicked.
@@ -75,8 +112,8 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
   // Adds a marker to the map.
   function addMarker(location) {
     var marker = new google.maps.Marker({
-      draggable: true,
       animation: google.maps.Animation.DROP,
+      draggable: true,
       position: location,
       map: ctrl.map
     });

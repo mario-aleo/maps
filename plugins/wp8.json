@@ -7,7 +7,12 @@
         "files": {
             "Properties/WMAppManifest.xml": {
                 "parents": {
-                    "/Deployment/App/Capabilities": []
+                    "/Deployment/App/Capabilities": [
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_LOCATION\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             },
             "config.xml": {
@@ -27,6 +32,9 @@
             "PACKAGE_NAME": "{0d8f1fb0-61fa-11e5-82ab-8de24a0a18b8}"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "{0d8f1fb0-61fa-11e5-82ab-8de24a0a18b8}"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "{0d8f1fb0-61fa-11e5-82ab-8de24a0a18b8}"
         }
     },

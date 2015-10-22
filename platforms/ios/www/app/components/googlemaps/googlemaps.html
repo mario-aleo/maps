@@ -1,0 +1,26 @@
+<md-content layout="column" layout-align="space-between center" style="width: 100%; height: 100%;">
+  <md-toolbar>
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+
+      <div flex="10" layout layout-align="start">
+        <md-button md-no-ink=""class="md-icon-button md-primary" ng-click="maps.back()" aria-label="Back">
+          <ng-md-icon icon="chevron_left"></ng-md-icon>
+        </md-button>
+      </div>
+
+      <div flex layout layout-align="center">
+        <p>{{ maps.title }}</p>
+      </div>
+
+      <div flex="10" layout layout-align="end">
+      </div>
+
+    </div>
+  </md-toolbar>
+
+  <div flex layout layout-align="center center">
+    <md-whiteframe class="md-whiteframe-7dp" layout layout-align="center center" style="width: 30em; height: 40em;">
+      <div id="map" style="width: 28em; height: 38em;"></div>
+    </md-whiteframe>
+  </div>
+</md-content>

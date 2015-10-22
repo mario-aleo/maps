@@ -24,10 +24,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "plugin.google.maps": {
+    "cordova-plugin-geolocation": {
         "source": {
-            "type": "local",
-            "path": "/Users/mario.aleo/Desktop/cordova-plugin-googlemaps-master"
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
         },
         "is_top_level": true,
         "variables": {}
