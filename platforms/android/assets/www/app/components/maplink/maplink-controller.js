@@ -5,15 +5,9 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   var ctrl = this;
 
   // Start Variable Definition
-  var count = 1;
-
-  var clock;
-
   var lat = shared.position.lat;
 
   var long = shared.position.long;
-
-  var markers = [];
   // End Variable Definition
 
 
@@ -22,34 +16,6 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
     $state.go("main");
   };
   // End Common Functions
-
-
-  // Start Hold To Mark Controller
-  var startCount = function(e){
-    count = 1;
-    if ( angular.isDefined(clock) ) return;
-    clock = $interval(function() {
-      if(count > 0){
-        count = count - 1;
-      } else{
-        alert("Add");
-        addMarker(e.object.latlng);
-        stopCount();
-      }
-    }, 500);
-  };
-
-  var stopCount = function(){
-    if (angular.isDefined(clock)) {
-      $interval.cancel(clock);
-      clock = undefined;
-    }
-  };
-
-  $scope.$on('$destroy', function() {
-    stopCount();
-  });
-  // End Hold To Mark Controller
 
 
   // Start Geolocation Watch Controller
@@ -91,8 +57,8 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
 
   map.setCenter(point, zoomLevel);
 
-  //var smallMapControl = new GSmallMapControl();
-  //map.addControl(smallMapControl);
+  var smallMapControl = new GSmallMapControl();
+  map.addControl(smallMapControl);
   // End MapLink Map Controller
 
 

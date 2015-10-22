@@ -99,10 +99,12 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
     });
 
     google.maps.event.addListener(ctrl.map, 'mousedown', function(event) {
+      //alert("TouchStart");
       startCount(event);
     });
 
     google.maps.event.addListener(ctrl.map, 'mouseup', function(event) {
+      //alert("TouchEnd");
       stopCount();
     });
 
