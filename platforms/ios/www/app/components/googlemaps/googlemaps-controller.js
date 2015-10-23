@@ -6,17 +6,17 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
 
 
   // Start Variable Definition
+  ctrl.map;
+
   var count = 1;
 
   var clock;
-
-  ctrl.map;
 
   var lat = shared.position.lat;
 
   var long = shared.position.long;
 
-  var markers = [];
+  var markers = shared.mapObjects.markers;
   // End Variable Definition
 
 
@@ -54,36 +54,6 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
   // End Hold To Mark Controller
 
 
-  // Start Geolocation Watch Controller
-  document.addEventListener("deviceready", function () {
-    var watchOptions = {
-       timeout : 3000,
-       enableHighAccuracy: false // may cause errors if true
-     };
-
-    var watch = $cordovaGeolocation.watchPosition(watchOptions);
-    watch.then(
-     null,
-     function(err) {
-       // error
-     },
-     function(position) {
-       shared.position.lat  = position.coords.latitude;
-       shared.position.long = position.coords.longitude;
-
-       lat = shared.position.lat;
-       long = shared.position.long;
-
-       ctrl.map.center.lat = lat;
-       ctrl.map.center.long = long;
-     }
-    );
-
-    watch.clearWatch();
-  }, false);
-  // End Geolocation Watch Controller
-
-
   // Start GoogleMaps Map Controller
   function initMap() {
     if(lat == null || long == null){
@@ -97,6 +67,13 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
       zoom: 12,
       center: center
     });
+
+    if(shared.mapObjects.markers.length != 0){
+      var leng = shared.mapObjects.markers.length;
+      for(var i = 0; i < leng; i++){
+        shared.mapObjects.markers[i].setMap(ctrl.map);
+      }
+    }
 
     google.maps.event.addListener(ctrl.map, 'mousedown', function(event) {
       startCount(event);
@@ -118,11 +95,41 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
       position: location,
       map: ctrl.map
     });
-    markers.push(marker);
+    shared.mapObjects.markers.push(marker);
   };
 
   initMap();
   // Start GoogleMaps Map Controller
+
+
+  // Start Geolocation Watch Controller
+  document.addEventListener("deviceready", function () {
+    var watchOptions = {
+       timeout : 3000,
+       enableHighAccuracy: false // may cause errors if true
+     };
+
+    var watch = $cordovaGeolocation.watchPosition(watchOptions);
+    watch.then(
+     null,
+     function(err) {
+       // error
+     },
+     function(position) {
+       if(position.coords.latitude.toPrecision(5) != lat.toPrecision(5)  || position.coords.longitude.toPrecision(5) != long.toPrecision(5)){
+         shared.position.lat  = position.coords.latitude.toPrecision;
+         shared.position.long = position.coords.longitude.toPrecision;
+
+         lat = shared.position.lat;
+         long = shared.position.long;
+         ctrl.map.setCenter({lat: lat, lng: long});
+       }
+     }
+    );
+
+
+  }, false);
+  // End Geolocation Watch Controller
 
 
   // Start Common Watchs

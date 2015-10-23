@@ -32,14 +32,15 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
          // error
        },
        function(position) {
-         shared.position.lat  = position.coords.latitude;
-         shared.position.long = position.coords.longitude;
+         if(position.coords.latitude.toPrecision(5) != lat.toPrecision(5)  || position.coords.longitude.toPrecision(5) != long.toPrecision(5)){
+           shared.position.lat  = position.coords.latitude;
+           shared.position.long = position.coords.longitude;
 
-         lat = shared.position.lat;
-         long = shared.position.long;
+           lat = shared.position.lat;
+           long = shared.position.long;
+           map.setCenter(new MPoint(long, lat), zoomLevel);
+         }
      });
-
-     watch.clearWatch();
    }, false)
    // End Geolocation Watch Controller
 
@@ -58,11 +59,14 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   map.setCenter(point, zoomLevel);
   // End MapLink Map Controller
 
+  LBS.Event.addListener(map, "click", function (e) {
+    var point = new MMarker(map.getLatLngFromPixel(e.xy));
+    map.addMarker(point);
+  });
 
   // Start Common Watchs
   $scope.$watch("$state.current.title", function() {
     ctrl.title = $state.current.title;
-    $scope.$apply();
   }, true);
   // End Common Watchs
 });

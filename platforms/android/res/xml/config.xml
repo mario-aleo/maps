@@ -1,28 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.marioaleo.maps" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="Whitelist">
-        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
-        <param name="onload" value="true" />
+    <feature name="OrientationLock">
+        <param name="android-package" value="com.plugin.phonegap.OrientationLock" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
     </feature>
     <feature name="StatusBar">
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="GoogleMaps">
-        <param name="android-package" value="plugin.google.maps.GoogleMaps" />
-    </feature>
-    <feature name="External">
-        <param name="android-package" value="plugin.google.maps.External" />
-    </feature>
-    <feature name="Geocoder">
-        <param name="android-package" value="plugin.google.maps.MyGeocoder" />
-    </feature>
-    <feature name="Compass">
-        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
-    </feature>
-    <feature name="OrientationLock">
-        <param name="android-package" value="com.plugin.phonegap.OrientationLock" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
     </feature>
     <allow-intent href="market:*" />
     <name>Maps</name>

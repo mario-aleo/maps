@@ -6,4 +6,8 @@ angular.module("ngapp").service("shared", function(){
       lat: null,
       long: null
     };
+
+    this.mapObjects = {
+      markers: []
+    };
 });

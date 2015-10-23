@@ -7,41 +7,15 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
 
     // Start Common Functions
     ctrl.goToGoogleMaps = function(){
-      window.plugins.orientationLock.unlock()
+      //window.plugins.orientationLock.unlock()
       $state.go("googlemaps");
     };
 
     ctrl.goToMapLink = function(){
-      window.plugins.orientationLock.unlock()
+      //window.plugins.orientationLock.unlock()
       $state.go("maplink");
     };
     // End Common Functions
-
-
-    /*ctrl.toggle = angular.noop;
-
-
-    ctrl.isOpen = function() { return false };
-    $mdComponentRegistry
-    .when("right")
-    .then( function(sideNav){
-      ctrl.isOpen = angular.bind( sideNav, sideNav.isOpen );
-      ctrl.toggle = angular.bind( sideNav, sideNav.toggle );
-    });
-
-
-    ctrl.toggleRight = function() {
-    $mdSidenav("right").toggle()
-        .then(function(){
-        });
-    };
-
-
-    ctrl.close = function() {
-    $mdSidenav("right").close()
-        .then(function(){
-        });
-    };*/
 
 
     // Start Geolocation Startup

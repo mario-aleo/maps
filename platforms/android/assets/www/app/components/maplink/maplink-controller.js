@@ -32,14 +32,15 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
          // error
        },
        function(position) {
-         shared.position.lat  = position.coords.latitude;
-         shared.position.long = position.coords.longitude;
+         if(position.coords.latitude.toPrecision(5) != lat.toPrecision(5)  || position.coords.longitude.toPrecision(5) != long.toPrecision(5)){
+           shared.position.lat  = position.coords.latitude;
+           shared.position.long = position.coords.longitude;
 
-         lat = shared.position.lat;
-         long = shared.position.long;
+           lat = shared.position.lat;
+           long = shared.position.long;
+           map.setCenter(new MPoint(long, lat), zoomLevel);
+         }
      });
-
-     watch.clearWatch();
    }, false)
    // End Geolocation Watch Controller
 
@@ -53,16 +54,26 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   } else{
     var point = new MPoint(long, lat);
   }
-  var zoomLevel = 14;
+  var zoomLevel = 1;
 
   map.setCenter(point, zoomLevel);
   // End MapLink Map Controller
 
+  /*LBS.Event.addListener(map, "click", function (e) {
+    var point = new MMarker(map.getLatLngFromPixel(e.xy));
+    map.addMarker(point);
+  });*/
+
+  for(var i = 0; i < 9999; i++){
+    var marker = new MMarker(new MPoint((-180 + (i/4)), (-90 + (i/8))));
+    map.addMarker(marker);
+    var marker = new MMarker(new MPoint((180 - (i/4)), (-90 + (i/8))));
+    map.addMarker(marker);
+  }
 
   // Start Common Watchs
   $scope.$watch("$state.current.title", function() {
     ctrl.title = $state.current.title;
-    $scope.$apply();
   }, true);
   // End Common Watchs
 });
