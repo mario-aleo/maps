@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("MapLinkController", function(shared, $state, $scope, $interval, $cordovaGeolocation){
+angular.module("ngapp").controller("MapLinkController", function(shared, $state, $scope, $cordovaGeolocation){
 
   var ctrl = this;
 
@@ -56,9 +56,6 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   var zoomLevel = 14;
 
   map.setCenter(point, zoomLevel);
-
-  var smallMapControl = new GSmallMapControl();
-  map.addControl(smallMapControl);
   // End MapLink Map Controller
 
 

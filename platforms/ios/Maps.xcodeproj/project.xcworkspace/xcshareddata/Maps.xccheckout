@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2EF50C17-79D5-4D83-96C6-AC34B64DA30D</string>
+	<string>EBD6B2A1-1DD8-48CB-9B37-9EA43D28238C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Maps</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3660FA262968B093AEDF6B47CB6D05623EFC484B</key>
 		<string>https://github.com/marioaleogolsat/maps.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/Maps.xcodeproj</string>
+	<string>platforms/ios/Maps.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3660FA262968B093AEDF6B47CB6D05623EFC484B</key>
