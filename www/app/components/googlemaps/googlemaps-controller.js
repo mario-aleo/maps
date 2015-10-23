@@ -64,7 +64,7 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
 
     ctrl.map = new google.maps.Map(document.getElementById('map'), {
       disableDefaultUI: true,
-      zoom: 12,
+      zoom: 10,
       center: center
     });
 
