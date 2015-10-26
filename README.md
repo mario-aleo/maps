@@ -1,6 +1,6 @@
 <h1># Maps</h1>
 
-<p>Testing the following map API: Google Maps Web API</p>
+<p>Testing the following map API:</p>
 <ul>
   <li> Google Maps Web API </li>
   <li> MapLink Javascript API </li>
