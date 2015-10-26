@@ -59,17 +59,14 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   map.setCenter(point, zoomLevel);
   // End MapLink Map Controller
 
-  /*LBS.Event.addListener(map, "click", function (e) {
-    var point = new MMarker(map.getLatLngFromPixel(e.xy));
+  LBS.Event.addListener(map, "click", function (e) {
+    var point = new MMarker(map.getLatLngFromPixel(e.xy), { draggable: true });
     map.addMarker(point);
-  });*/
+  });
 
-  for(var i = 0; i < 9999; i++){
-    var marker = new MMarker(new MPoint((-180 + (i/4)), (-90 + (i/8))));
-    map.addMarker(marker);
-    var marker = new MMarker(new MPoint((180 - (i/4)), (-90 + (i/8))));
-    map.addMarker(marker);
-  }
+  LBS.Event.addListener(point, "click", function (e) {
+    point.openInfoWindow(e.object.latlng);
+  });
 
   // Start Common Watchs
   $scope.$watch("$state.current.title", function() {

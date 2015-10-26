@@ -64,26 +64,15 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
 
     ctrl.map = new google.maps.Map(document.getElementById('map'), {
       disableDefaultUI: true,
-      zoom: 0,
+      zoom: 10,
       center: center
     });
 
-    /*if(shared.mapObjects.markers.length != 0){
+    if(shared.mapObjects.markers.length != 0){
       var leng = shared.mapObjects.markers.length;
       for(var i = 0; i < leng; i++){
         shared.mapObjects.markers[i].setMap(ctrl.map);
       }
-    }*/
-    var marker;
-    for(var i = 0; i < 9999; i++){
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng((-90 + (i/8)), (-180 + (i/4)))
-      });
-      marker.setMap(ctrl.map);
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng((-90 + (i/8)), (180 - (i/4)))
-      });
-      marker.setMap(ctrl.map);
     }
 
     google.maps.event.addListener(ctrl.map, 'mousedown', function(event) {
@@ -137,8 +126,6 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
        }
      }
     );
-
-
   }, false);
   // End Geolocation Watch Controller
 

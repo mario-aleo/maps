@@ -24,6 +24,13 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
       title: "MapLink",
       controller: "MapLinkController",
       controllerAs: "link"
+    })
+    .state("heremaps", {
+      url: "/heremaps",
+      templateUrl: "app/components/heremaps/heremaps.html",
+      title: "HereMaps",
+      controller: "HereMapsController",
+      controllerAs: "here"
     });
 
 }]);

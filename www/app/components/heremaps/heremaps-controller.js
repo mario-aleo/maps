@@ -1,17 +1,11 @@
 "use strict";
 
-angular.module("ngapp").controller("GoogleMapsController", function(shared, $state, $scope, $interval, $cordovaGeolocation){
+angular.module("ngapp").controller("HereMapsController", function(shared, $state, $scope, $interval, $cordovaGeolocation){
 
   var ctrl = this;
 
 
   // Start Variable Definition
-  ctrl.map;
-
-  var count = 1;
-
-  var clock;
-
   var lat = shared.position.lat;
 
   var long = shared.position.long;
@@ -54,52 +48,21 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
   // End Hold To Mark Controller
 
 
-  // Start GoogleMaps Map Controller
-  function initMap() {
-    if(lat == null || long == null){
-      var center = { lat: -23.56, lng: -46.65 };
-    } else{
-      var center = { lat: lat, lng: long };
-    }
+  // Start HereMaps Map Controller
+  if(lat  == null || long = null){
+    lat = -23.56;
+    long = -46.65;
+  }
 
-    ctrl.map = new google.maps.Map(document.getElementById('map'), {
-      disableDefaultUI: true,
-      zoom: 10,
-      center: center
-    });
-
-    if(shared.mapObjects.markers.length != 0){
-      var leng = shared.mapObjects.markers.length;
-      for(var i = 0; i < leng; i++){
-        shared.mapObjects.markers[i].setMap(ctrl.map);
-      }
-    }
-
-    google.maps.event.addListener(ctrl.map, 'mousedown', function(event) {
-      startCount(event);
-    });
-
-    google.maps.event.addListener(ctrl.map, 'mouseup', function(event) {
-      stopCount();
-    });
-
-    google.maps.event.addListener(ctrl.map, 'dragstart', function(event) {
-      stopCount();
-    });
-  };
-
-  function addMarker(location) {
-    var marker = new google.maps.Marker({
-      animation: google.maps.Animation.DROP,
-      draggable: true,
-      position: location,
-      map: ctrl.map
-    });
-    shared.mapObjects.markers.push(marker);
-  };
-
-  initMap();
-  // Start GoogleMaps Map Controller
+  var map = new nokia.maps.map.Display(
+	document.getElementById("mapContainer"), {
+		// Zoom level for the map
+		zoomLevel: 10,
+		// Map center coordinates
+		center: [lat, long]
+	}
+);
+  // End HereMaps Map Controller
 
 
   // Start Geolocation Watch Controller

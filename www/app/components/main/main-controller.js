@@ -15,6 +15,11 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
       //window.plugins.orientationLock.unlock()
       $state.go("maplink");
     };
+
+    ctrl.goToHereMaps = function(){
+      //window.plugins.orientationLock.unlock()
+      $state.go("heremaps");
+    };
     // End Common Functions
 
 

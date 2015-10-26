@@ -54,7 +54,7 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   } else{
     var point = new MPoint(long, lat);
   }
-  var zoomLevel = 10;
+  var zoomLevel = 1;
 
   map.setCenter(point, zoomLevel);
   // End MapLink Map Controller
