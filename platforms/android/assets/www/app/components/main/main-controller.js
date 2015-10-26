@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $mdSidenav, $mdComponentRegistry, $cordovaGeolocation){
+angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $cordovaGeolocation){
 
     var ctrl = this;
 

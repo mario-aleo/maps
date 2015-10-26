@@ -49,7 +49,7 @@ angular.module("ngapp").controller("HereMapsController", function(shared, $state
 
 
   // Start HereMaps Map Controller
-  if(lat  == null || long = null){
+  if(lat  == null || long == null){
     lat = -23.56;
     long = -46.65;
   }
