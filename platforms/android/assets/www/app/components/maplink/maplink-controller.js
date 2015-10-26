@@ -67,6 +67,8 @@ angular.module("ngapp").controller("MapLinkController", function(shared, $state,
   LBS.Event.addListener(point, "click", function (e) {
     point.openInfoWindow(e.object.latlng);
   });
+  // End MapLink Map Controller
+
 
   // Start Common Watchs
   $scope.$watch("$state.current.title", function() {

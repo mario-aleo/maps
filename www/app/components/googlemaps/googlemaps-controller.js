@@ -99,7 +99,7 @@ angular.module("ngapp").controller("GoogleMapsController", function(shared, $sta
   };
 
   initMap();
-  // Start GoogleMaps Map Controller
+  // End GoogleMaps Map Controller
 
 
   // Start Geolocation Watch Controller

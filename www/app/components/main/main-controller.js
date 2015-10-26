@@ -38,6 +38,7 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
     }, false);
     // End Geolocation Startup
 
+
     // Start Common Watchs
     $scope.$watch("$state.current.title", function() {
       if(ctrl.title != $state.current.title){
