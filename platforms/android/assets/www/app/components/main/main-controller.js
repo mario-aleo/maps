@@ -6,19 +6,9 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
 
 
     // Start Common Functions
-    ctrl.goToGoogleMaps = function(){
-      //window.plugins.orientationLock.unlock()
-      $state.go("googlemaps");
-    };
-
     ctrl.goToNgGoogleMaps = function(){
       //window.plugins.orientationLock.unlock()
       $state.go("nggooglemaps");
-    };
-
-    ctrl.goToMapLink = function(){
-      //window.plugins.orientationLock.unlock()
-      $state.go("maplink");
     };
 
     ctrl.goToHereMaps = function(){

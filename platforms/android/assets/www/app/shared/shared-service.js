@@ -8,7 +8,6 @@ angular.module("ngapp").service("shared", function(){
     };
 
     this.mapObjects = {
-      markers: [],
       hMarkers: [],
       ngMarkers: []
     };
