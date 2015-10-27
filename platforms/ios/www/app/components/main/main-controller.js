@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $mdSidenav, $mdComponentRegistry, $cordovaGeolocation){
+angular.module("ngapp").controller("MainController", function(shared, $state, $scope, $cordovaGeolocation){
 
     var ctrl = this;
 
@@ -11,9 +11,19 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
       $state.go("googlemaps");
     };
 
+    ctrl.goToNgGoogleMaps = function(){
+      //window.plugins.orientationLock.unlock()
+      $state.go("nggooglemaps");
+    };
+
     ctrl.goToMapLink = function(){
       //window.plugins.orientationLock.unlock()
       $state.go("maplink");
+    };
+
+    ctrl.goToHereMaps = function(){
+      //window.plugins.orientationLock.unlock()
+      $state.go("heremaps");
     };
     // End Common Functions
 
@@ -32,6 +42,7 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
       });
     }, false);
     // End Geolocation Startup
+
 
     // Start Common Watchs
     $scope.$watch("$state.current.title", function() {

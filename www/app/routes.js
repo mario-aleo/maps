@@ -11,19 +11,12 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
       controller: "MainController",
       controllerAs: "main"
     })
-    .state("googlemaps", {
-      url: "/googlemaps",
-      templateUrl: "app/components/googlemaps/googlemaps.html",
+    .state("nggooglemaps", {
+      url: "/nggooglemaps",
+      templateUrl: "app/components/nggooglemaps/nggooglemaps.html",
       title: "GoogleMaps",
-      controller: "GoogleMapsController",
-      controllerAs: "maps"
-    })
-    .state("maplink", {
-      url: "/maplink",
-      templateUrl: "app/components/maplink/maplink.html",
-      title: "MapLink",
-      controller: "MapLinkController",
-      controllerAs: "link"
+      controller: "NgGoogleMapsController",
+      controllerAs: "ngmaps"
     })
     .state("heremaps", {
       url: "/heremaps",

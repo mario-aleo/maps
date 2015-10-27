@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ngCordova"])
+angular.module("ngapp", [ "ngTouch", "ui.router", "ngMdIcons", "ngMaterial", "ngCordova", 'uiGmapgoogle-maps'])
 
 .run(function($rootScope, $cordovaDevice){
     document.addEventListener("deviceready", function () {

@@ -1,4 +1,4 @@
-<md-content layout="column" layout-align="space-between center" style="width: 100%; height: 100%;">
+<div layout="column" layout-align="space-between center" style="width: 100%; height: 100%;">
     <md-toolbar>
         <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
             <p flex></p>
@@ -10,17 +10,24 @@
             <p flex></p>
         </div>
     </md-toolbar>
-    
+
     <div flex layout layout-align="center center" style="width: 100%; height: 90%;">
       <md-whiteframe class="md-whiteframe-z3" layout="column" layout-align="center center" style="width: 86%; height: 33%;">
-        <md-button class="md-raised" style="width: 90%;" ng-click="main.goToGoogleMaps()">
-            <p>Google Maps</p>
+        <!--md-button class="md-raised" style="width: 90%;" ng-click="main.goToGoogleMaps()">
+            Google Maps API
+        </md-button-->
+
+        <md-button class="md-raised" style="width: 90%;" ng-click="main.goToNgGoogleMaps()">
+            Google Maps
         </md-button>
 
         <md-button class="md-raised" style="width: 90%;" ng-click="main.goToMapLink()">
-            <p>MapLink</p>
+            MapLink
+        </md-button>
+
+        <md-button class="md-raised" style="width: 90%;" ng-click="main.goToHereMaps()">
+            HereMaps
         </md-button>
       </md-whiteframe>
     </div>
-
-</md-content>
+</div>

@@ -11,6 +11,11 @@ angular.module("ngapp").controller("MainController", function(shared, $state, $s
       $state.go("googlemaps");
     };
 
+    ctrl.goToNgGoogleMaps = function(){
+      //window.plugins.orientationLock.unlock()
+      $state.go("nggooglemaps");
+    };
+
     ctrl.goToMapLink = function(){
       //window.plugins.orientationLock.unlock()
       $state.go("maplink");
