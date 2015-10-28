@@ -19,8 +19,17 @@
   </md-toolbar>
 
   <div flex layout layout-align="center center" style="width: 100%; height: 90%;">
-    <md-whiteframe class="md-whiteframe-z3" layout layout-align="center center" style="width: 86%; height: 86%;">
-      <ui-gmap-google-map center='ngmaps.map.center' zoom='ngmaps.map.zoom' options='ngmaps.map.option' events="ngmaps.map.events">
+    <md-whiteframe class="md-whiteframe-z3" layout="column" layout-align="space-around center" style="width: 86%; height: 86%;">
+      <div layout layout-align="center center" style="width: 100%;">
+        <md-input-container style="width: 70%; margin-bottom: -4em;">
+          <label>Search Box</label>
+          <input type="text" ng-model="ngmaps.address">
+        </md-input-container>
+        <md-button md-no-ink="" class="md-icon-button" ng-click="ngmaps.searchAddress()" aria-label="Search" style="margin-bottom: -3em; margin-right: -0.7em;">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      </div>
+      <ui-gmap-google-map center='ngmaps.map.center' zoom='ngmaps.map.zoom' options='ngmaps.map.option' events="ngmaps.map.events" control="ngmaps.map.control">
         <ui-gmap-marker ng-repeat="point in ngmaps.map.markers" coords="point.coords" idkey="point.id" options="point.options" events="point.events">
         </ui-gmap-marker>
       </ui-gmap-google-map>

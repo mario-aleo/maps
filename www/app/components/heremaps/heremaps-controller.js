@@ -6,6 +6,8 @@ angular.module("ngapp").controller("HereMapsController", function(shared, $state
 
 
   // Start Variable Definition
+  ctrl.address = null;
+
   var count = 1;
 
   var clock;
@@ -145,6 +147,98 @@ angular.module("ngapp").controller("HereMapsController", function(shared, $state
     shared.mapObjects.hMarkers.push(marker);
 
     map.addObject(marker);
+  };
+
+  var DistPZoom = function(target){
+    if(ctrl.map.zoom > 0 && ctrl.map.zoom <= 5){
+
+    } else if(ctrl.map.zoom == 6){
+      target.setPosition({lat: target.getPosition().lat + 1, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 7){
+      target.setPosition({lat: target.getPosition().lat + 0.5, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 8){
+      target.setPosition({lat: target.getPosition().lat + 0.3, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 9){
+      target.setPosition({lat: target.getPosition().lat + 0.15, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 10){
+      target.setPosition({lat: target.getPosition().lat + 0.08, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 11){
+      target.setPosition({lat: target.getPosition().lat + 0.03, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 12){
+      target.setPosition({lat: target.getPosition().lat + 0.02, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 13){
+      target.setPosition({lat: target.getPosition().lat + 0.01, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 14){
+      target.setPosition({lat: target.getPosition().lat + 0.005, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 15){
+      target.setPosition({lat: target.getPosition().lat + 0.002, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 16){
+      target.setPosition({lat: target.getPosition().lat + 0.0015, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 17){
+      target.setPosition({lat: target.getPosition().lat + 0.001, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 18){
+      target.setPosition({lat: target.getPosition().lat + 0.0005, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 19){
+      target.setPosition({lat: target.getPosition().lat + 0.0002, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 20){
+      target.setPosition({lat: target.getPosition().lat + 0.0001, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 21){
+      target.setPosition({lat: target.getPosition().lat + 0.00005, lng: target.getPosition().lng});
+    }
+  };
+
+  var UndoDistPZoom = function(event){
+    if(ctrl.map.zoom > 0 && ctrl.map.zoom <= 5){
+
+    } else if(ctrl.map.zoom == 6){
+      target.setPosition({lat: target.getPosition().lat - 1, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 7){
+      target.setPosition({lat: target.getPosition().lat - 0.5, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 8){
+      target.setPosition({lat: target.getPosition().lat - 0.3, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 9){
+      target.setPosition({lat: target.getPosition().lat - 0.15, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 10){
+      target.setPosition({lat: target.getPosition().lat - 0.08, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 11){
+      target.setPosition({lat: target.getPosition().lat - 0.03, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 12){
+      target.setPosition({lat: target.getPosition().lat - 0.02, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 13){
+      target.setPosition({lat: target.getPosition().lat - 0.01, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 14){
+      target.setPosition({lat: target.getPosition().lat - 0.005, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 15){
+      target.setPosition({lat: target.getPosition().lat - 0.002, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 16){
+      target.setPosition({lat: target.getPosition().lat - 0.0015, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 17){
+      target.setPosition({lat: target.getPosition().lat - 0.001, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 18){
+      target.setPosition({lat: target.getPosition().lat - 0.0005, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 19){
+      target.setPosition({lat: target.getPosition().lat - 0.0002, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 20){
+      target.setPosition({lat: target.getPosition().lat - 0.0001, lng: target.getPosition().lng});
+    } else if(ctrl.map.zoom == 21){
+      target.setPosition({lat: target.getPosition().lat - 0.00005, lng: target.getPosition().lng});
+    }
+  };
+
+  var geocoder = platform.getGeocodingService();
+  ctrl.searchAddress = function(){
+    var geocodingParams = {
+      searchText: ctrl.address
+    };
+    console.log("Searching for: " + ctrl.address);
+    geocoder.geocode(geocodingParams,
+      function(data){
+        console.log("Success: " + data.Response.View[0].Result[0]);
+        map.setCenter({lat: data.Response.View[0].Result[0].Location.DisplayPosition.Latitude, lng: data.Response.View[0].Result[0].Location.DisplayPosition.Longitude});
+      }, function(err) {
+        console.log("Erro: " + err);
+      }
+    );
   };
   // End HereMaps Map Controller
 

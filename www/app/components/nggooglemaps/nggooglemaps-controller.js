@@ -10,6 +10,8 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
 
   ctrl.markers = shared.mapObjects.ngMarkers;
 
+  ctrl.address;
+
   var count = 1;
 
   var clock;
@@ -72,6 +74,7 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
         disableDefaultUI: true,
         disableDoubleClickZoom: true
       },
+      control: {},
       events: {
         mousedown: function (map, eventName, originalEventArgs) {
           var args = originalEventArgs[0];
@@ -87,6 +90,94 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
     }
   });
 
+  var geocoder;
+  geocoder = new google.maps.Geocoder();
+  ctrl.searchAddress = function(){
+    geocoder.geocode( { 'address': ctrl.address}, function(results, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+         ctrl.map.control.refresh({latitude: results[0].geometry.location.lat(), longitude: results[0].geometry.location.lng()});
+       } else {
+         console.log("Geocode was not successful for the following reason: " + status);
+       }
+     });
+   };
+
+  var DistPZoom = function(event){
+    if(ctrl.map.zoom > 0 && ctrl.map.zoom <= 5){
+
+    } else if(ctrl.map.zoom == 6){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 1;
+    } else if(ctrl.map.zoom == 7){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.5;
+    } else if(ctrl.map.zoom == 8){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.3;
+    } else if(ctrl.map.zoom == 9){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.15;
+    } else if(ctrl.map.zoom == 10){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.08;
+    } else if(ctrl.map.zoom == 11){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.03;
+    } else if(ctrl.map.zoom == 12){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.02;
+    } else if(ctrl.map.zoom == 13){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.01;
+    } else if(ctrl.map.zoom == 14){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.005;
+    } else if(ctrl.map.zoom == 15){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.002;
+    } else if(ctrl.map.zoom == 16){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.0015;
+    } else if(ctrl.map.zoom == 17){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.001;
+    } else if(ctrl.map.zoom == 18){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.0005;
+    } else if(ctrl.map.zoom == 19){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.0002;
+    } else if(ctrl.map.zoom == 20){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.0001;
+    } else if(ctrl.map.zoom == 21){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.00005;
+    }
+  };
+
+  var UndoDistPZoom = function(event){
+    if(ctrl.map.zoom > 0 && ctrl.map.zoom <= 5){
+
+    } else if(ctrl.map.zoom == 6){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 1;
+    } else if(ctrl.map.zoom == 7){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.5;
+    } else if(ctrl.map.zoom == 8){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.3;
+    } else if(ctrl.map.zoom == 9){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.15;
+    } else if(ctrl.map.zoom == 10){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.08;
+    } else if(ctrl.map.zoom == 11){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.03;
+    } else if(ctrl.map.zoom == 12){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.02;
+    } else if(ctrl.map.zoom == 13){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.01;
+    } else if(ctrl.map.zoom == 14){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.005;
+    } else if(ctrl.map.zoom == 15){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.002;
+    } else if(ctrl.map.zoom == 16){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.0015;
+    } else if(ctrl.map.zoom == 17){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.001;
+    } else if(ctrl.map.zoom == 18){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.0005;
+    } else if(ctrl.map.zoom == 19){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.0002;
+    } else if(ctrl.map.zoom == 20){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.0001;
+    } else if(ctrl.map.zoom == 21){
+      ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.00005;
+    }
+  };
+
   function addMarker(args) {
     var marker = {
       id: shared.mapObjects.ngMarkers.length + 1,
@@ -100,12 +191,12 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
       },
       events: {
         mousedown: function(event){
-          ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude + 0.002; //move the marker to make draggable better
+          DistPZoom(event);
           ctrl.markers[event.key - 1].dragen = 1;
         },
         mouseup: function(event){
           if(ctrl.markers[event.key - 1].dragen == 1){
-            ctrl.markers[event.key - 1].coords.latitude = ctrl.markers[event.key - 1].coords.latitude - 0.002; //back if it didn't move
+            UndoDistPZoom(event);
           }
         },
         dragstart: function(event){
@@ -116,6 +207,22 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
     };
     shared.mapObjects.ngMarkers.push(marker);
     ctrl.markers = shared.mapObjects.ngMarkers;
+
+    // Reverse Geolocation Method
+    /*var adrs = null;
+    var latlng = {lat: args.latLng.lat(), lng: args.latLng.lng()};
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          adrs = results[0].formatted_address;
+          console.log(adrs);
+        } else {
+          console.log('No results found');
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status);
+      }
+    });*/
   };
   // End GoogleMaps Map Controller
 
@@ -140,7 +247,7 @@ angular.module("ngapp").controller("NgGoogleMapsController", function(shared, $s
 
          lat = shared.position.lat;
          long = shared.position.long;
-         ctrl.map.setCenter({lat: lat, lng: long});
+         ctrl.map.control.refresh({latitude: lat, longitude: long});
        }
      }
     );
